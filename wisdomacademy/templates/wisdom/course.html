@@ -1,0 +1,51 @@
+{% extends 'wisdom/layout1.html' %}
+
+{% load static %}
+
+
+{% block body %}
+
+<div id="services" class="services section">
+    <div class="container" style="z-index:-2">
+      <div class="row">
+            <div class="col-lg-12">
+                <ul class="nacc">
+                <li class="active">
+                    <div>
+                    <div class="thumb">
+                        <div class="row">
+                        <div class="col-lg-6 align-self-center">
+                            <div class="left-text">
+                            <h4>Respondsive Web Development (HTML & CSS)</h4>
+                            <p class="text-dark">Our Respondsive Web Development course with HTML and CSS is designed to teach you the skills
+                                you need to build modern, mobile friendly websites.Through a series of hands-on projects and exercises.</p>
+                            <div class="ticks-list"><span>
+                                <i class="fa fa-check"></i> Create layout that adapt to different screen size</span>
+                                <span><i class="fa fa-check"></i> Learn how to use HTML to structure content</span> 
+                                <span><i class="fa fa-check"></i> Semantic markup for accessibiliy and SEO</span>
+                                <span><i class="fa fa-check"></i> Master CSS fundamentals</span> 
+                                <span><i class="fa fa-check"></i> Design and implement a variety of User interfrace components including navigation menu forms and buttons  </span> 
+                                <span><i class="fa fa-check"></i> Explore advance CSS techniques</span>
+                                <span><i class="fa fa-check"></i> Build a real world project</span></div>
+                            <p class="text-dark">The duration of this course is 3 Months.  </p>
+                            <div class="border-first-button scroll-to-section">
+                                <a href="">REGISTER TODAY</a>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <div class="right-image">
+                            <img  src="{% static 'assets/images/WISDOM2.png' %}" alt="">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
