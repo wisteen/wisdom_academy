@@ -1,0 +1,7 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{u_form.as_p}}
+    {{u_profile_form.as_p}}
+    {% comment %} <input type="submit"> {% endcomment %}
+    <button type="submit">Submit</button>
+</form>

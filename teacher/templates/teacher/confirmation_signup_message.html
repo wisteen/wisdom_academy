@@ -1,0 +1,23 @@
+<!--{ % load account %}
+{% user_display user as user_display %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Confirmation</title>
+</head>
+<body>
+    <p>Hello {{ user_display }},</p>
+    
+    <p>Welcome to our learning platform! To activate your account, please click on the following link:</p>
+
+    <p><a href="{{ activate_url }}" target="_blank">{{ activate_url }}</a></p>
+
+    <p>Thank you for joining us.</p>
+</body>
+</html> -->
+
+{% autoescape off %}
+Hi {{user.first_name}},
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
