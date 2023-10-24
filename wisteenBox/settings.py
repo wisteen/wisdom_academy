@@ -47,14 +47,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wisdomacademy', #this is app by me 
     'ckeditor', #this is for the editor
     'ckeditor_uploader',
     'teacher',
+
     'allauth',
     'allauth.account',
     # 'allauth.socialaccount',
     # 'allauth.socialaccount.providers.google',
+    'wisdomacademy', #this is app by me 
+    'student',
+    
+
 ]
 
 

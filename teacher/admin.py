@@ -21,20 +21,3 @@ class AccountUserAdmin(UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, AccountUserAdmin)
-# from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
-# Register your models here.
-
-# @admin.register(Teacher)
-# class TeacherAdmin(admin.ModelAdmin):
-#     list_display = [ 'email', 'is_approved']
-
-#     actions = ['approve_teachers']
-#     add_fieldsets = UserAdmin.add_fieldsets +  (
-#     	(None, {'fields':('email', 'first_name', 'last_name', 'username')})
-#     	)
-#     fieldset = UserAdmin.fieldsets + (
-#     	(None, {'fields':('email', 'first_name', 'last_name', 'username')})
-#     	)
-#     def approve_teachers(self, request, queryset):
-#         queryset.update(is_approved=True)
-#     approve_teachers.short_description = "Approve selected teachers"

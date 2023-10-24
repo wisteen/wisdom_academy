@@ -1,0 +1,153 @@
+<template>
+    <div class="signup">
+       <div id="signup" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h6>Sign Up</h6>
+            <h4>Join Us <em>Now</em></h4>
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact"   v-on:submit.prevent="submitForm">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="contact-dec">
+                  <img :src="require('../assets/assets/images/contact-dec-v3.png')" alt="">
+                </div>
+              </div>
+              <div class="col-lg-5 ">
+                <p>If you already have an account <a href="/login">Login</a></p>
+                <img :src="require('../assets/assets/images/WISDOM7.png')" style="height: 80%; width: 100%;" alt="" class="img-flex image-responsive ">
+              </div>
+              <div class="col-lg-7">
+                <div class="fill-form">
+                  <div class="row">
+
+                    <div class="col-lg-6">
+                      
+                      <fieldset>
+                        <input type="name" name="uname" v-model="uname" id="uname" placeholder="Username" autocomplete="on" required>
+                      </fieldset>
+                      <fieldset>
+                        <input type="name" name="fname" v-model="fname" id="fname" placeholder="First Name" autocomplete="on" required>
+                      </fieldset>
+                      <fieldset>
+                        <input type="name" name="lname" v-model="lname" id="lname" placeholder="Last Name" autocomplete="on" required>
+                      </fieldset>
+                      <fieldset>
+                        <input type="text" name="email" v-model="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                      </fieldset>
+                      <fieldset>
+                        <input type="phone" v-model="phone" name="number" id="phone" placeholder="Pone Number" autocomplete="on">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                   
+                      <fieldset>
+                        <textarea name="about" v-model="about" type="text" class="form-control" id="message" placeholder="About" required=""></textarea>  
+                      </fieldset>
+                      <fieldset>
+                        <input name="password" v-model="password" type="password" class="form-control" id="password" placeholder="Password" required="">
+                      </fieldset>
+                      <fieldset>
+                        <input name="password2" v-model="password2" type="password" class="form-control" id="password2" placeholder="Repeat Password" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <button  id="form-submit" class="main-button ">Signup Here</button>
+                      </fieldset>
+                      <div class="notification is-danger mt-4" v-if="errors.length" >
+                        <p v-for="error in errors"
+                            v-bind:key="error" class="text-white">
+                            {{ error }}
+                          </p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+             
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'signup',
+  data() {
+    return {
+      uname: '',
+      fname: '',
+      lname: '',
+      email: '',
+      phone: '',
+      about: '',
+      password: '',
+      password2: '',
+      errors: [],
+    };
+  },
+  methods: {
+    submitForm() {
+      this.errors = [];
+      let formData = {
+        uname: this.uname,
+        fname: this.fname,
+        lname: this.lname,
+        email: this.email,
+        phone: this.phone,
+        about: this.about,
+        password: this.password,
+        password2: this.password2,
+      };
+      if (this.password !== this.password2) {
+        this.errors.push('Password did not match');
+      }
+
+      if (this.password === '' || this.password2 === '') {
+        this.errors.push("Password Field Can't be empty ");
+      }
+
+      if (!this.errors.length) {
+        axios.post('/api/v1/users/', formData)
+        .then(response => {
+          this.$router.push('/login')
+        })
+        .catch(error => {
+          if (error.response) {
+            const status = error.response.status
+            if (status === 400) {
+              this.errors.push('Invalid input data')
+            } else if (status === 401) {
+              this.errors.push('Unauthorized access')
+            } else if (status === 404) {
+              this.errors.push('Resource not found')
+            } else {
+              this.errors.push('Server error')
+            }
+          } else if (error.message) {
+            this.errors.push(`Error: ${error.message}`)
+          } else {
+            this.errors.push('Unknown error')
+          }
+        })
+      
+      }
+    },
+  },
+};
+</script>

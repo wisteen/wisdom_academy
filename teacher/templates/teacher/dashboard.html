@@ -1,0 +1,264 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+
+   <!-- Bootstrap core CSS -->
+   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+   <!-- Additional CSS Files -->
+   <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css'%}">
+   <link rel="stylesheet" href="{% static 'assets/css/templatemo-digimedia-v3.css'%}">
+   <link rel="stylesheet" href="{% static 'assets/css/animated.css'%}">
+   <link rel="stylesheet" href="{% static 'assets/css/owl.css'%}">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+
+      .menu-w{
+        position: relative;
+        display: flex;
+        flex-direction:column;
+        width: 100%;
+        row-gap: 4px;
+      }
+      .menu-list{
+        width: 100%;
+        padding-left: 4px;
+        line-height: 50px;
+
+      }
+
+      #sidebarMenu{
+        padding: 0;
+      }
+.btn{
+  color:#fff;
+    z-index: 1;
+    border:none;
+  font-size:18px;
+  font-weight: 600;
+  min-width: 150px;
+  padding:11px 30px;
+  line-height:normal;
+    position: relative;
+    text-align: left; 
+    display:inline-block;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+      .btn{
+    overflow: hidden;
+    -webkit-transition: border-color 0.3s, color 0.3s;
+    transition: border-color 0.3s, color 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+    .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: #37474f;
+    z-index: -1;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    color: #fff;
+    border-color: #4da6e7;
+}
+.btn:hover::before {
+    opacity: 1;
+    background-color: #4da6e7;
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+    </style>
+
+    
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <button class="navbar-toggler position- d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 position-relative" href="#">Wisteen Technology</a>
+
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="" style="height:100vh; position: sticky; top: 0;" >
+        <div class="menu-w ">
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">Dashboard</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">Set profile</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s">Set payment</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">Withdraw payment</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">Reset Password</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.9s">Create Class</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.0s">Update Class</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.1s">View Class</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.2s">Class Decision</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.3s">Students Comment</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.4s">Ratings</a>
+          <a class="menu-list bg-dark text-white btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.5s">Go Premium</a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom bg-gradient">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-dark btn-outline-secondary">Balance</button>
+            <button type="button" class="btn btn-sm btn-dark btn-outline-secondary">N120,100.00</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-dark btn-outline-secondary">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+
+      <!--  -->
+
+                        <div class="row">
+                    <div class="col-lg-4 col-sm-4">
+                      <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
+                        <div class="progress" data-percentage="90">
+                          <span class="progress-left">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <span class="progress-right">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <div class="progress-value">
+                            <div>
+                              900<br>
+                              <span>No. Of Student</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                      <div class="skill-item second-skill-item wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
+                        <div class="progress" data-percentage="80">
+                          <span class="progress-left">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <span class="progress-right">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <div class="progress-value">
+                            <div class="fs-4">
+                              120,000,000<br>
+                              <span>Class handled</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                      <div class="skill-item third-skill-item wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
+                        <div class="progress" data-percentage="50">
+                          <span class="progress-left">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <span class="progress-right">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <div class="progress-value">
+                            <div class="fs-4">
+                              120,000,000<br>
+                              <span>Amount Earned</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+      
+
+
+
+
+
+
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Student's Name</th>
+              <th scope="col">Comments</th>
+              <th scope="col">Ratings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,014</td>
+              <td>dashboard</td>
+              <td>illustrative</td>
+              <td>rich</td>
+              <td>data</td>
+            </tr>
+            <tr>
+              <td>1,015</td>
+              <td>random</td>
+              <td>tabular</td>
+              <td>information</td>
+              <td>text</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script type="text/Javascript" src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/animation.js' %}"></script>
+    <script src="{% static 'assets/js/imagesloaded.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'boot/js/bootstrap.js' %}"></script>
+  </body>
+</html>

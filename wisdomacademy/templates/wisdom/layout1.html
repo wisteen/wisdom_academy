@@ -26,18 +26,27 @@
 -->
   <title>Wisdom Academy</title>
   
+  <style type="text/css">
+    @media (max-width: 780px){
+      .pre-header{
+        display: none;
+      }
+    }
+  </style>
   </head>
     <!-- Pre-header Starts -->
     <div class="pre-header">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-sm-12 col-6">
+          <div class="col-lg-8 col-12 col-md-6 col-sm-6 d-flex flex-column 
+                  align-items-stretch">
             <ul class="info">
               <li><a href="#"><i class="fa fa-envelope"></i>info@wisdomacademy.com</a></li>
               <li><a href="#"><i class="fa fa-phone"></i>091-2544-2676</a></li>
             </ul>
           </div>
-          <div class="col-lg-4 col-sm-6 col-12">
+          <div class="col-lg-4 col-12 col-md-6 col-sm-6 d-flex flex-column 
+                  align-items-stretch">
             <ul class="social-media">
               <li><a href="#" style="display:grid;place-content:center"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#" style="display:grid;place-content:center"><i class="fa fa-instagram"></i></a></li>
@@ -45,6 +54,7 @@
               <li><a href="#" style="display:grid;place-content:center"><i class="fa fa-youtube"></i></a></li>
             </ul>
           </div>
+
         </div>
       </div>
     </div>
@@ -66,15 +76,24 @@
                 <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
                 <li class="scroll-to-section"><a href="/about">About</a></li>
                 <li class="scroll-to-section"><a href="/course">Courses</a></li>
-                <li class="scroll-to-section"><a href="#portfolio">Projects</a></li>
-                <li class="scroll-to-section"><a href="#blog">Forum</a></li>
-                <li class="scroll-to-section"><a href="/contact">Contact</a></li> 
-                <li class="scroll-to-section"><div class="border-first-button"><a href="/join">Login Now</a></div></li> 
+                <li class="scroll-to-section"><a href="/register/teacher">Teacher</a></li>
+                <li class="scroll-to-section"><a href="#blog">Student</a></li>
+                <li class="scroll-to-section"><a href="/contact">Contact</a></li>
+                <li class="scroll-to-section " data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i></li>
+                {% if user.is_authenticated %} 
+                <li class="scroll-to-section"><div class="border-first-button"><a href="/home">Log Out</a></div></li>
+
+                {% else %}
+                <li class="scroll-to-section"><div class="border-first-button"><a href="/join">Login Now</a></div></li>
+                {% endif %} 
+
               </ul>        
               <a class='menu-trigger'>
                   <span>Menu</span>
               </a>
-              <!-- ***** Menu End ***** -->
+              <!-- ***** Menu End 
+                @TechStudioAcademy1
+                #TechStudioAcademyAt5 ***** -->
             </nav>
           </div>
         </div>
@@ -101,6 +120,7 @@
     <script src="{% static 'assets/js/animation.js' %}"></script>
     <script src="{% static 'assets/js/imagesloaded.js' %}"></script>
     <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'boot/js/bootstrap.js' %}"></script>
   
   
 

@@ -4,48 +4,253 @@
 
 
 {% block body %}
+<style type="text/css">
+  .course_list_des{
+  float:left;
+  width:100%;
+  text-align:center;  
+  position:relative;
+  padding:62px 20px 15px;
+}
+  .course_list_des h5{
+  font-size: 22px;  
+  margin:0px 0px 18px;
+  display:inline-block;
+  text-transform: uppercase;
+}
+
+ .course_list_des h6{
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0px 0px 24px;
+ }
+
+.btn{
+  color:#fff;
+    z-index: 1;
+    border:none;
+  font-size:18px;
+  font-weight: 600;
+  min-width: 150px;
+  padding:11px 30px;
+  line-height:normal;
+    position: relative;
+    text-align: center; 
+    display:inline-block;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+/* Wayra */
+.btn{
+    overflow: hidden;
+    -webkit-transition: border-color 0.3s, color 0.3s;
+    transition: border-color 0.3s, color 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: #37474f;
+    z-index: -1;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    color: #fff;
+    border-color: #4da6e7;
+}
+.btn:hover::before {
+    opacity: 1;
+    background-color: #4da6e7;
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.course_img{
+  border-bottom: 10px solid;
+  border-radius: 0;
+}
+
+.course_img img {
+    float: left;
+    width: 100%;
+}
+
+input[type="search"] {
+    float: left;
+    width: 100%;
+    font-weight: normal;
+    color: #7d8386;
+    font-size: 14px;
+    text-align: left;
+    min-height: 46px;
+    line-height: 43px;
+    padding: 0 12px 1px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #dbdbdb;
+    text-transform: capitalize;
+    background-color: transparent;
+}
+
+select{
+    float: left;
+    width: 100%;
+    font-weight: normal;
+    color: #7d8386;
+    font-size: 14px;
+    text-align: left;
+    min-height: 46px;
+    line-height: 43px;
+    padding: 0 12px 1px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #dbdbdb;
+    text-transform: capitalize;
+    background-color: transparent;
+}
+</style>
+
+
 
 <div id="services" class="services section">
-    <div class="container" style="z-index:-2">
-      <div class="row">
-            <div class="col-lg-12">
-                <ul class="nacc">
-                <li class="active">
-                    <div>
-                    <div class="thumb">
-                        <div class="row">
-                        <div class="col-lg-6 align-self-center">
-                            <div class="left-text">
-                            <h4>Respondsive Web Development (HTML & CSS)</h4>
-                            <p class="text-dark">Our Respondsive Web Development course with HTML and CSS is designed to teach you the skills
-                                you need to build modern, mobile friendly websites.Through a series of hands-on projects and exercises.</p>
-                            <div class="ticks-list"><span>
-                                <i class="fa fa-check"></i> Create layout that adapt to different screen size</span>
-                                <span><i class="fa fa-check"></i> Learn how to use HTML to structure content</span> 
-                                <span><i class="fa fa-check"></i> Semantic markup for accessibiliy and SEO</span>
-                                <span><i class="fa fa-check"></i> Master CSS fundamentals</span> 
-                                <span><i class="fa fa-check"></i> Design and implement a variety of User interfrace components including navigation menu forms and buttons  </span> 
-                                <span><i class="fa fa-check"></i> Explore advance CSS techniques</span>
-                                <span><i class="fa fa-check"></i> Build a real world project</span></div>
-                            <p class="text-dark">The duration of this course is 3 Months.  </p>
-                            <div class="border-first-button scroll-to-section">
-                                <a href="">REGISTER TODAY</a>
-                            </div>
-                            </div>
+  
+    <div class="container-fluid" style="z-index:-2">
+
+        <div class="mt-5 mx-auto" id="menu">
+          <div class="col-lg-4 offset-lg-4  wow fadeInDown animated" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; animation-duration: 1s;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+            <div class="section-heading">
+              <h6>Pick a Class</h6>
+              <h4>You can Join any <em>Class</em></h4>
+              <div class="line-dec"></div>
+
+            </div>
+          </div>
+
+            <div class="container-fluid mx-auto">
+              <div class="row">
+                <div class="col-lg-4  border border-end px-3 py-3" style="height:100vh; position: sticky; top: 0;">
+                  
+                  <button class="border btn btn-secondary btn-outline-primary m-3">
+                    Popular
+                  </button>
+                  <button class="border btn btn-secondary btn-outline-info m-3">
+                    Recommended
+                  </button>
+                  <button class="border btn btn-secondary btn-outline-danger m-3">
+                    New
+                  </button>
+                  <button class="border btn btn-secondary btn-outline-warning m-3">
+                    Ongoing
+                  </button>
+
+                  <input type="search" name="search" placeholder="Search Keywords">
+
+                  <select name="Category " class="my-3">
+                                      <option value="0">Category</option>
+                                      <option value="9">Publishing Date</option>
+                                      <option value="2">Publishing Date</option>
+                                      <option value="3">Publishing Date</option>
+                  </select>
+
+                  <input type="submit" name="" class="border btn btn-secondary btn-outline-danger  m-3" value="🔎SEARCH🔍">
+                </div>
+                <div class="col-lg-8">
+                  <div class="row">
+
+
+                    <!-- ITEM STARTS HERE -->
+                    <div class="col-lg-4 col-12 col-md-6 col-sm-12 d-flex flex-column 
+                      align-items-stretch">
+
+                      <div class="card mb-3 text-center">
+
+                        <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
+                          <img src="{% static 'assets/images/wisdom123.png' %}" class="" >
                         </div>
-                        <div class="col-lg-6 align-self-center">
-                            <div class="right-image">
-                            <img  src="{% static 'assets/images/WISDOM2.png' %}" alt="">
-                            </div>
-                        </div>
-                        </div>
+
+                        <div class="d-flex flex-column 
+                        course_list_des"> 
+                          <h5>Noodles & Shrimps</h5>
+                          <h6> Enjoy
+                            the taste with shrimps and more text that doesn't affect
+                            the container size
+                            the taste with shrimps and more text that doesn't affect
+                            the container size. 
+                          </h6>
+                          <hr> 
+                          <div class="row"> 
+                            <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">
+                              <i class="fa fa-star text-warning"></i>
+                              <i class="fa fa-star text-warning"></i>
+                              <i class="fa fa-star text-warning"></i>
+                              <i class="fa fa-star text-warning"></i>
+                              <i class="fa fa-star"></i>
+                            </p> 
+                            <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">103 Reviews</p> 
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-users"></i> 3.1k Students</p>
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-user"></i>Wisdom</p>
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-calendar"></i> 2 weeks</p>
+                            <p class="col-6 col-md-6 card-text text-start">Date:Pending </p>
+                          </div> 
+                        </div> 
+
+                        <a href="#" class="btn btn-secondary" >JOIN CLASS</a>
+
+                      </div> 
                     </div>
-                    </div>
-                </li>
-                </ul>
+                    <!-- ITEM ENDS HERE -->
+
+                   
+
+
+
+                  </div>
+                </div>
+
+
+                
+              </div>
+
             </div>
         </div>
     </div>
 </div>
+
+
+
+<!-- modal -->
+<!-- <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+        <h4 class="modal-title">
+          Search for any available class
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>This is the body</p>
+      </div>
+
+    </div>
+    
+  </div>
+  
+</div> -->
 
 {% endblock %}
