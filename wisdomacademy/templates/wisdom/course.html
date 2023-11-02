@@ -168,27 +168,21 @@ select{
                 </div>
                 <div class="col-lg-8">
                   <div class="row">
-
-
-                    <!-- ITEM STARTS HERE -->
+                    <!-- ITEM STARTS HERE for the active once-->
+                    {% for course in active_courses %}
                     <div class="col-lg-4 col-12 col-md-6 col-sm-12 d-flex flex-column 
                       align-items-stretch">
 
                       <div class="card mb-3 text-center">
 
                         <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
-                          <img src="{% static 'assets/images/wisdom123.png' %}" class="" >
+                          <img src="{{course.course_image.url}}" class="h-100" >
                         </div>
 
                         <div class="d-flex flex-column 
                         course_list_des"> 
-                          <h5>Noodles & Shrimps</h5>
-                          <h6> Enjoy
-                            the taste with shrimps and more text that doesn't affect
-                            the container size
-                            the taste with shrimps and more text that doesn't affect
-                            the container size. 
-                          </h6>
+                          <h5>{{course.class_title}}</h5>
+                          <h6> {{course.class_description|truncatechars:200 }} </h6>
                           <hr> 
                           <div class="row"> 
                             <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">
@@ -198,18 +192,61 @@ select{
                               <i class="fa fa-star text-warning"></i>
                               <i class="fa fa-star"></i>
                             </p> 
-                            <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">103 Reviews</p> 
+                            <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">{{ total_ratings }}</p> 
                             <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-users"></i> 3.1k Students</p>
-                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-user"></i>Wisdom</p>
-                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-calendar"></i> 2 weeks</p>
-                            <p class="col-6 col-md-6 card-text text-start">Date:Pending </p>
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-user"></i> {{course.instructor}}</p>
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-calendar"></i> {{course.class_duration}}</p>
+                            <p class="col-6 col-md-6 card-text text-start">Status: {{course.class_status}} </p>
                           </div> 
                         </div> 
 
-                        <a href="#" class="btn btn-secondary" >JOIN CLASS</a>
+                        <a href="{% url 'wisdom:course-detail' course.pk %}" class="btn btn-secondary" >JOIN CLASS</a>
 
                       </div> 
                     </div>
+                    {% endfor %}
+                    <!-- ITEM ENDS HERE -->
+
+                    <!-- ITEM STARTS HERE -->
+                    {% for course in inactive_courses %}
+                    <div class="col-lg-4 col-12 col-md-6 col-sm-12 d-flex flex-column 
+                      align-items-stretch">
+
+                      <div class="card mb-3 text-center">
+
+                        <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
+                          <img src="{{course.course_image.url}}" class="h-100" >
+                        </div>
+
+                        <div class="d-flex flex-column 
+                        course_list_des"> 
+                          <h5>{{course.class_title}}</h5>
+                          <h6> {{course.class_description|truncatechars:100 }} </h6>
+                          <hr> 
+                          <div class="row"> 
+                            <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">
+                              {{ course.total_ratings }}
+
+                              {% for _ in "12345" %}
+
+                              <span class="fa fa-star{% if forloop.counter > course.total_ratings %}-o text-muted{% endif %}"></span>
+                            
+                              {% endfor %}
+                            </p> 
+                            
+                            <p class="col-6 col-md-6 card-text text-start" style="white-space: nowrap;">₦ {{ course.class_price }}</p> 
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-users"></i> 3.1k Students</p>
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-user"></i> {{course.instructor}}</p>
+                            <p class="col-6 col-md-6 card-text text-start"><i class="fa fa-calendar"></i> {{course.class_duration}}</p>
+                            <p class="col-6 col-md-6 card-text text-start">Status: {{course.class_status}} </p>
+                          </div> 
+                        </div> 
+
+                        <a href="{% url 'wisdom:course-detail' course.pk %}" class="btn btn-secondary" >JOIN CLASS</a>
+
+                      </div> 
+                    </div>
+                    {% endfor %}
                     <!-- ITEM ENDS HERE -->
 
                    

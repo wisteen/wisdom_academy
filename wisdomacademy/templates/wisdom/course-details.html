@@ -1,0 +1,544 @@
+{% extends 'wisdom/layout1.html' %}
+
+{% load static %}
+{% load mathfilters %}
+
+{% block body %}
+
+    <title>{{ course.class_title }} Details</title>
+
+    <style>
+        .circle-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #007BFF;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+
+        .half-star::before {
+		    content: '\f089'; /* Unicode character for half-filled star (adjust as needed) */
+		    position: relative;
+		    left: -0.25em; /* Adjust the positioning as needed */
+		    color: #FFD700; /* Color of the half-filled star */
+		}
+
+		.main-banner:after {
+		  content: '';
+		  z-index: -11;
+		}
+
+		.tab{
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+
+		}
+
+		.tab button{
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: .3s;
+
+		}
+
+		.tab button:hover{
+			background-color: #ddd;
+
+		}
+
+		.tab button.active{
+			background-color: #ccc;
+		}
+
+		.tabcontent{
+			animation:fadeEffect 1s;
+		}
+
+		@keyframes fadeEffect {
+			from {
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+
+		@media (max-width: 1000px){
+			.main-banner .left-content h2 {
+			  z-index: 2;
+			  padding-top:50px;
+			  position: relative;
+			  font-weight: 700;
+			  font-size: 30px;
+			  color: #2a2a2a;
+			  margin-bottom: 20px;
+			}
+		}
+
+
+    </style>
+
+
+
+  	<!-- inerpageslider.jpg -->
+  	<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+<!--       <div class="row">
+        <div class="col-lg-12"> -->
+        	<!-- layout1 -->
+          <div class="row">
+            
+          	<!-- left hand side of the web starts here -->
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInLeft" style="z-index: 3" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <h3 class="">{{ course.class_title }}</h3>
+
+                <img src="{{ course.course_image.url }}" alt="">
+              </div>
+
+
+                 <!-- icon details start here	 -->
+              <div class="row mt-3  m-4 my-4">
+	              	<!-- Course Creator -->
+		        <div class="col-md-6 col-12 col-lg-6 col-sm-12 ">
+		                <div class="row" style="column-gap: 1px">
+		                    <div class="circle-icon col-4">
+		                        <i class="fa fa-user"></i>
+		                    </div>
+		                    <div class="col-8">
+		                        <h6 style="padding: 0; margin: 0">Instructor</h6>
+		                        <p >{{course.instructor}}</p>
+		                    </div>
+		                </div>
+		        </div>
+	            <hr>	
+	            <!-- Class Status -->
+	            <div class="col-md-6 col-12 col-lg-6 col-sm-12">
+	                <div class="row" style="column-gap: 1px">
+	                    <div class="circle-icon col-4">
+	                        <i class="fa fa-certificate"></i>
+	                    </div>
+	                    <div class="col-8">
+	                        <h6 style="padding: 0; margin: 0">Class Status</h6>
+	                        <p>{{course.class_status}}</p>
+	                    </div>
+	                </div>
+	            </div>
+	            <hr>	
+	            <!-- Reviews -->
+	            <div class="col-md-6 col-12 col-lg-6 col-sm-12" >
+	                <div class="row" style="column-gap: 1px">
+	                    <div class="circle-icon  col-4">
+	                        <i class="fa fa-star"></i>
+	                    </div>
+	                    <div class="col-8">
+	                        <h6 style="padding: 0; margin: 0">Ratings: {{ total_ratings }}</h6>
+							<p><span class="rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+							  
+
+							    
+							</span></p>
+
+	                    </div>
+	                </div>
+	            </div>
+	            <hr>	
+	            <!-- Class Fee -->
+	            <div class="col-md-6 col-12 col-lg-6 col-sm-12" >
+	                <div class="row" style="column-gap: 10px">
+	                    <div class="circle-icon col-4">
+	                        <i class="fa fa-dollar "></i>
+	                    </div>
+	                    <div class="col-8">
+	                        <h6 style="padding: 0; margin: 0">Class Fee</h6>
+	                        <p>N{{course.class_price}}</p>
+	                    </div>
+	                </div>
+	            </div>
+	            <hr>	
+	            <!-- Class Duration -->
+	            <div class="col-md-6 col-12 col-lg-6 col-sm-12" >
+	                <div class="row" style="column-gap: 10px">
+	                    <div class="circle-icon col-4">
+	                        <i class="fa fa-calendar "></i>
+	                    </div>
+	                    <div class="col-8">
+	                        <h6 style="padding: 0; margin: 0">Duration</h6>
+	                        <p>{{ course.class_duration }}</p>
+	                    </div>
+	                </div>
+	            </div>
+
+              </div>
+              <!-- icon details ends here -->
+
+                  
+             </div>
+             <!-- left hand side  of the web ends here -->
+
+
+
+             <!-- right hand side of the web starts here -->
+            <div class="col-lg-6 ">
+
+	             <div class="left-content show-up header-text wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
+	                <div class="row">
+	                  <div class="col-lg-12">
+	                    <!-- <h2>{{ course.class_title }}</h2> -->
+	                    <!-- the tabs start here -->
+	                    <div class="tab">
+	                    	<button class="tablinks" onclick="openDescription(event, 'descriptionTab')" id="defaultOption">Full Description</button>
+	                    	<button class="tablinks" onclick="openDescription(event, 'CurriculumTab')">Course material</button>
+	                    	<button class="tablinks" onclick="openDescription(event, 'AboutTab')">About Tutor</button>
+	                    </div>
+
+	                    <div id="descriptionTab" class="tabContent">
+
+	                    	{{ course.full_description_and_curriculum | safe}}
+	                    </div>
+	                    <div id="CurriculumTab" class="tabContent">
+	                    	{{ course.course_material | safe}}
+	                    </div>
+	                    <div id="AboutTab" class="tabContent">
+	                    	<img src="{{course.instructor.picture.url}}" style="width:150px">
+	                    	<p>
+	                    	{{ course.instructor.user.first_name}}
+	                    	{{ course.instructor.user.last_name}}
+	                    	({{ course.instructor.qualifications}})
+	                    	
+	                    	</p>
+	                    	<p>
+	                    		{{course.instructor.short_description}}
+	                    	</p>
+	                    	
+	                    </div>
+	                    <!-- the tabs ends here -->
+	                  </div>
+	                  <div class="col-lg-12">
+	                    <div class="border-first-button scroll-to-section">
+	                      <a href="#contact">ENROLL NOW</a>
+	                    </div>
+	                  </div>
+	                </div>
+	             </div>
+
+              	<div class="row my-3">
+              		<h1>Ratings and reviews</h1>
+              		<p>Ratings and reviews are from student who have attended teachers class before</p>
+              		{% for review in reviews %}
+    				<div class="col-12 border rounded py-2 my-2">
+    					
+    					<div class="row">
+    						<div class="col-lg-12 bg-light ">
+    							<img src="{{ review.student.profile_picture.url }}" class="rounded-circle " style="width: 50px; height: 50px">
+    							<span class="px-1">{{review.student}}</span>
+    						</div>
+    						<div class="col-lg-12 bg-light">
+    					
+
+							  {% for _ in "12345" %}
+
+						   		<span class="fa fa-star{% if forloop.counter > review.rating %}-o text-muted{% endif %}"></span>
+						    
+						  	  {% endfor %}
+    						</div>
+    						<div class="col-lg-12">
+    							
+		    					<p >
+		    						{{ review.comment }}
+		    					</p>
+    						</div>
+    					</div>
+    				</div>
+
+    				{% empty %}
+    				<h1>NO REVIEWS YET 🚶‍♂️🚶‍♀️</h1>
+    				{% endfor %}
+
+    				<div class="course-details">
+					    <!-- Course details content -->
+
+					    <!-- Add a section for existing reviews if needed -->
+
+					    {% if user.is_authenticated %}
+					      <h2>Add a Review</h2>
+					      <form method="post" action="{% url 'wisdom:add_review' course.id %}">
+					        {% csrf_token %}
+					        {{ form.as_p }}
+					        <button type="submit">Submit Review</button>
+					      </form>
+					    {% endif %}
+					  </div>
+
+
+    			</div>
+            </div>
+            <!-- left hand side  of the web ends here -->
+
+          </div>
+          <!-- layout1 ends here -->
+
+<!--         </div>
+      </div> -->
+
+
+          
+    
+
+
+
+<!-- sroll menu -->
+
+<h1>Relate Class</h1>
+<div class="scrollmenu row">
+
+	<!-- ITEM STARTS HERE -->
+                    <div class="col-lg-3 col-12 col-md-6 col-sm-12 d-flex flex-column 
+                      align-items-stretch">
+
+                      <div class="card mb-3 text-center">
+
+                        <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
+                          <img src="{{course.course_image.url}}" class="h-100" >
+                        </div>
+
+                        <div class="d-flex flex-column 
+                        course_list_des"> 
+                          <h5>TITLE</h5>
+                          <h6> A description which says hello world... </h6>
+                          <hr> 
+                          <div class="row"> 
+                           
+                          </div> 
+                        </div> 
+
+                        <a href="{% url 'wisdom:course-detail' course.pk %}" class="btn btn-secondary" >JOIN CLASS</a>
+
+                      </div> 
+                    </div>
+                    <!-- ITEM ENDS HERE -->
+
+
+	<!-- ITEM STARTS HERE -->
+                    <div class="col-lg-3 col-12 col-md-6 col-sm-12 d-flex flex-column 
+                      align-items-stretch">
+
+                      <div class="card mb-3 text-center">
+
+                        <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
+                          <img src="{{course.course_image.url}}" class="h-100" >
+                        </div>
+
+                        <div class="d-flex flex-column 
+                        course_list_des"> 
+                          <h5>TITLE</h5>
+                          <h6> A description which says hello world... </h6>
+                          <hr> 
+                          <div class="row"> 
+                           
+                          </div> 
+                        </div> 
+
+                        <a href="{% url 'wisdom:course-detail' course.pk %}" class="btn btn-secondary" >JOIN CLASS</a>
+
+                      </div> 
+                    </div>
+                    <!-- ITEM ENDS HERE -->
+
+	<!-- ITEM STARTS HERE -->
+                    <div class="col-lg-3 col-12 col-md-6 col-sm-12 d-flex flex-column 
+                      align-items-stretch">
+
+                      <div class="card mb-3 text-center">
+
+                        <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
+                          <img src="{{course.course_image.url}}" class="h-100" >
+                        </div>
+
+                        <div class="d-flex flex-column 
+                        course_list_des"> 
+                          <h5>TITLE</h5>
+                          <h6> A description which says hello world... </h6>
+                          <hr> 
+                          <div class="row"> 
+                           
+                          </div> 
+                        </div> 
+
+                        <a href="{% url 'wisdom:course-detail' course.pk %}" class="btn btn-secondary" >JOIN CLASS</a>
+
+                      </div> 
+                    </div>
+                    <!-- ITEM ENDS HERE -->
+
+	<!-- ITEM STARTS HERE -->
+                    <div class="col-lg-3 col-12 col-md-6 col-sm-12 d-flex flex-column 
+                      align-items-stretch">
+
+                      <div class="card mb-3 text-center">
+
+                        <div class="card course_img" style="position:relative; overflow: hidden;height: 300px">
+                          <img src="{{course.course_image.url}}" class="h-100" >
+                        </div>
+
+                        <div class="d-flex flex-column 
+                        course_list_des"> 
+                          <h5>TITLE</h5>
+                          <h6> A description which says hello world... </h6>
+                          <hr> 
+                          <div class="row"> 
+                           
+                          </div> 
+                        </div> 
+
+                        <a href="{% url 'wisdom:course-detail' course.pk %}" class="btn btn-secondary" >JOIN CLASS</a>
+
+                      </div> 
+                    </div>
+                    <!-- ITEM ENDS HERE -->
+</div>
+
+
+
+
+
+
+  
+
+
+
+
+    
+
+    </div>
+  </div>
+
+<script type="text/javascript">
+	function createRatingStar(ratingValue){
+		const ratingContainer = document.querySelector('.rating');
+		ratingContainer.innerHTML = '';
+
+		for (let i = 1; i<= 5; i++){
+			const star = document.createElement('i');
+			if (i <= ratingValue){
+				star.className = 'fa fa-star text-warning';
+			} else {
+				star.className = 'fa fa-star-o';
+
+			}
+
+			const n = i - ratingValue;
+			const rns = n.toFixed(1);
+			const rn = parseFloat(rns);
+
+			if (rn === 0.6){
+				star.className = 'fa fa-star-half-alt text-warning';
+
+			}
+
+			if (rn === 0.7){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+			if (rn === 0.8){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+			if (rn === 0.9){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+			if (rn === 0.4){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+			if (rn === 0.3){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+			if (rn === 0.2){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+			if (rn === 0.1){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+
+			if (rn === 0.5){
+				star.className = 'fa fa-star-half-o text-warning';
+
+			}
+
+			ratingContainer.appendChild(star)
+
+		}
+	}
+
+	const result = {{ total_ratings }};
+	createRatingStar(result)
+
+</script>
+
+<script type="text/javascript">
+	
+	function openDescription(evt, tabName){
+		let i, tabcontent, tablinks;
+
+		tabcontent = document.getElementsByClassName("tabcontent")
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display =  "none";
+		}
+
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "")
+		}
+
+		document.getElementById(tabName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+
+	document.getElementById("defaultOption").click()
+</script>
+{%  endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <h1>{{ course.class_title }} Details</h1>
+    
+    <img src="" alt="{{ course.class_title }} Image">
+    
+    <p><strong>Description:</strong> </p>
+    <p><strong>Price:</strong> $400</p>
+    
+    
+    <a href="{% url 'wisdom:course' %}">Back to Course List</a> -->

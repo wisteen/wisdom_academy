@@ -14,7 +14,7 @@ class UserProfile(models.Model):
 	cv = models.FileField(upload_to='cv/', blank=True, null= True)
 	picture = models.ImageField(upload_to='dp/', blank=True, null= True)
 	application_letter = models.FileField(upload_to='applications/', blank=True, null= True)
-	category = models.CharField(max_length=20, null= True, blank=True)
+	category = models.CharField(max_length=20, choices=[('teacher', 'teacher'), ('student', 'student')],  blank=True, null= True)
 	def __str__(self):
 		return self.user.username
 

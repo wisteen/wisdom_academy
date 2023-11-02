@@ -97,6 +97,42 @@
     -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
+
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 300px;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #007BFF;
+    color: white;
+    padding: 4px 8px;
+    margin: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tag input {
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+}
+
+button {
+    margin-top: 10px;
+}
+
     </style>
 
     
@@ -216,7 +252,13 @@
                   </div> 
       
 
-
+    <div class="tag-container">
+        <input type="text" id="tag-input" placeholder="Add tags">
+        <div id="tags-list" class="tags-list">
+        </div>
+    </div>
+    <button onclick="addTag()">Add Tag</button>
+    <script src="script.js"></script>
 
 
 
@@ -252,6 +294,33 @@
     </main>
   </div>
 </div>
+
+
+
+
+    <script type="text/javascript">
+      function addTag() {
+    const tagInput = document.getElementById('tag-input');
+    const tagsList = document.getElementById('tags-list');
+
+    const tagText = tagInput.value.trim();
+    
+    if (tagText !== '') {
+        const tag = document.createElement('div');
+        tag.className = 'tag';
+        tag.innerHTML = `${tagText} <span onclick="removeTag(this)">x</span>`;
+        
+        tagsList.appendChild(tag);
+        tagInput.value = '';
+    }
+}
+
+function removeTag(tagElement) {
+    const tagsList = document.getElementById('tags-list');
+    tagsList.removeChild(tagElement.parentNode);
+}
+
+    </script>
 
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script type="text/Javascript" src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

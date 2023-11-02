@@ -13,6 +13,11 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ("category","picture","phone_number", "application_letter", "years_of_experience", "qualifications", "cv")
+
+    def __init__(self, *args, **kwargs):
+    	super(UserProfileForm, self).__init__(*args, **kwargs)
+    	self.fields['category'].widget = forms.HiddenInput()
+    	self.initial['category'] = 'teacher'
         
 
 class RegistrationForm(UserCreationForm):

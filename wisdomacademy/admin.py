@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course #, Instructor, Student,Enrollment, Payment
+from .models import Course, Tag #, Instructor, Student,Enrollment, Payment
 # Register your models here.
 class CourseDisplay(admin.ModelAdmin):
     list_display = ("class_title", "instructor", "is_active" )
@@ -7,6 +7,7 @@ class CourseDisplay(admin.ModelAdmin):
     list_per_page = 25
     
 admin.site.register(Course, CourseDisplay)
+admin.site.register(Tag)
 # admin.site.register(Instructor)
 # admin.site.register(Student)
 # admin.site.register(Enrollment)
